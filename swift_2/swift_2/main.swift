@@ -100,7 +100,57 @@ var someDic2:[Int: String] = [1:"one",2:"two",3:"three"];
 /*
  10.访问字典
  */
+var someValue = someDic2[1];
+print(someValue ?? String());
 
+
+
+/*
+ 11.修改字典
+ */
+someDic2.updateValue("我是新值", forKey: 2);
+someDic2[3] = "我是3的新值";
+print(someDic2);
+
+
+
+/*
+ 12.移除key--value对
+ */
+someDic2.removeValue(forKey: 1);
+print(someDic2);
+
+
+
+/*
+ 13.遍历字典
+ */
+for (key, value) in someDic2 {
+    print("字典key=\(key)  value=\(value)");
+}
+
+
+
+/*
+ 14.字典转数组
+ */
+let dicKeys = [Int](someDic2.keys);
+let dicValues = [String](someDic2.values);
+print(dicKeys);
+print(dicValues);
+
+
+
+/*
+ 15.count属性
+ */
+print(someDic2.count);
+
+
+/*
+ 16.isEmpty属性
+ */
+print(someDic2.isEmpty);
 
 
 

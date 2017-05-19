@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wei-8u-L9B">
+                                <rect key="frame" x="0.0" y="100" width="600" height="350"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tnJ-wF-e7X">
+                                <rect key="frame" x="0.0" y="450" width="600" height="150"/>
+                                <color key="backgroundColor" red="0.45037227349999998" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wei-8u-L9B" secondAttribute="trailing" id="17L-iI-6Mp"/>
+                            <constraint firstItem="wei-8u-L9B" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="5Oa-sD-X5Q"/>
+                            <constraint firstItem="tnJ-wF-e7X" firstAttribute="top" secondItem="wei-8u-L9B" secondAttribute="bottom" id="6RR-Fq-I6G"/>
+                            <constraint firstItem="tnJ-wF-e7X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9kD-sx-YHh"/>
+                            <constraint firstAttribute="trailing" secondItem="tnJ-wF-e7X" secondAttribute="trailing" id="Cjv-lB-0Ap"/>
+                            <constraint firstItem="wei-8u-L9B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aIU-1S-LfC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tnJ-wF-e7X" secondAttribute="bottom" id="kz6-uM-ATV"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wei-8u-L9B" secondAttribute="bottom" constant="150" id="pt4-Lq-fbp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bluetoothTable" destination="wei-8u-L9B" id="hIF-as-mo5"/>
+                        <outlet property="resultTextView" destination="tnJ-wF-e7X" id="qdR-fv-004"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="251" y="408"/>
+        </scene>
+    </scenes>
+</document>
