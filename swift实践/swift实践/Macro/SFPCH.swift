@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 
+// MARK:---frame相关---
 enum APPFrme {
     
     static let ScreenWidth = UIScreen.main.bounds.size.width
@@ -17,3 +18,8 @@ enum APPFrme {
     static let ScreenHeight = UIScreen.main.bounds.size.height
 }
 
+// MARK:---存储名称---
+enum APPStorageName {
+    
+    static let isLogin = "SF_IsLogin"
+}

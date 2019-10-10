@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,8 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         //初始化tabbar
-        let tabbarVC = SFTabBarController()
-        self.window!.rootViewController = tabbarVC
+        
+//        let isLogin = UserDefaults.standard.bool(forKey: APPStorageName.isLogin);
+        
+//        if APPHelper.shared.isLogin == true {
+//
+//            let tabbarVC = SFTabBarController()
+//            self.window!.rootViewController = tabbarVC
+//        }else {
+        
+            let loginVC = SFLoginVC()
+            self.window!.rootViewController = loginVC
+//        }
+        
         self.window!.makeKeyAndVisible()
         
         return true
