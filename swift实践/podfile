@@ -1,0 +1,12 @@
+
+
+target 'swift实践' do
+
+#布局库
+pod 'SnapKit'
+#图片加载库
+pod 'Kingfisher'
+
+#网络加载框架
+pod 'Alamofire'
+end
