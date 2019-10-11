@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Alamofire
+import HandyJSON
 
 class SFLoginVC: UIViewController {
 
@@ -87,27 +88,25 @@ class SFLoginVC: UIViewController {
         ]
 
         Alamofire.request("http://gw-debug.istarguide.com/user/user/loginByPhone", method:.post, parameters: ["mobile":"18392475589","password":"8a6f2805b4515ac12058e79e66539be9","zone":"86"], encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
-            // 失败 FAILURE
-            print("登录结果==\(response.result)");
+            // 失败 FAILURE   成功SUCCESS
+            print("登录结果==\(response.value!)");
+            var tempData:Dictionary<String,Any> = response.value as! Dictionary<String,Any>
+            let tempDic = tempData["data"];
+            
+            let loginModel = SFLoginUserModel.deserialize(from: (tempDic as! Dictionary<String,Any>) );
+            
+            print("转换成功的model==\(loginModel?.id!) \(loginModel?.gender) \(loginModel?.nick)");
         }
-//        var urlRequest = URLRequest();
         
         
-//        Alamofire.request(URLRequestConvertible)
-//       URLRequest
-        
-        
-        let tabBarVC = SFTabBarController();
-        UIApplication.shared.delegate?.window??.rootViewController = tabBarVC;
-        
-        // 登录成功本地存储登录成功
-//        UserDefaults.standard.set(true, forKey: APPStorageName.isLogin);
-//        UserDefaults.standard.synchronize();
-        
-        APPHelper.shared.isLogin = true;
-        
-        print("点击了登录 账号:\(accountTF.text!)  密码:\(passwordTF.text!)");
-        self.view.endEditing(true);
+//        let tabBarVC = SFTabBarController();
+//        UIApplication.shared.delegate?.window??.rootViewController = tabBarVC;
+//
+//        // 登录成功本地存储登录成功
+//        APPHelper.shared.isLogin = true;
+//
+//        print("点击了登录 账号:\(accountTF.text!)  密码:\(passwordTF.text!)");
+//        self.view.endEditing(true);
     }
 }
 
