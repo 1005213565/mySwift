@@ -90,12 +90,26 @@ class SFLoginVC: UIViewController {
         Alamofire.request("http://gw-debug.istarguide.com/user/user/loginByPhone", method:.post, parameters: ["mobile":"18392475589","password":"8a6f2805b4515ac12058e79e66539be9","zone":"86"], encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             // 失败 FAILURE   成功SUCCESS
             print("登录结果==\(response.value!)");
-            var tempData:Dictionary<String,Any> = response.value as! Dictionary<String,Any>
-            let tempDic = tempData["data"];
             
-            let loginModel = SFLoginUserModel.deserialize(from: (tempDic as! Dictionary<String,Any>) );
+            if response.result.isSuccess {
+                
+                let code = (response.value as! Dictionary<String,Any>)["code"];
+                
+                if code as! Int == 0 { // 将code转换为Int类型
+                
+                    var tempData:Dictionary<String,Any> = response.value as! Dictionary<String,Any>
+                    let tempDic = tempData["data"];
+                    
+                    // 使用HandyJSON将字典转换为model
+                    let loginModel = SFLoginUserModel.deserialize(from: (tempDic as! Dictionary<String,Any>));
+                    // 存储用户登录信息
+                    APPHelper.shared.loginUserModel = loginModel;
+                    
+                    print("转换成功的model==\(String(describing: loginModel?.id!)) \(String(describing: loginModel?.gender)) \(String(describing: loginModel?.nick))");
+                }
+                
+            }
             
-            print("转换成功的model==\(loginModel?.id!) \(loginModel?.gender) \(loginModel?.nick)");
         }
         
         

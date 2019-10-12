@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
+        // 开启键盘管理
+        IQKeyboardManager.shared.enable = true;
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         //初始化tabbar
         

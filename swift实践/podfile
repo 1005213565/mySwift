@@ -12,4 +12,7 @@ pod 'Alamofire'
 #JSON转model库
 pod 'HandyJSON','5.0.0-beta'
 
+#键盘管理
+pod 'IQKeyboardManagerSwift'
+
 end

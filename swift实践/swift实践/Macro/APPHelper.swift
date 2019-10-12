@@ -16,11 +16,13 @@ class APPHelper: NSObject {
     // 是否已经登录
     var isLogin:Bool?{
         
-        set(isLogin){
-            
-            UserDefaults.standard.set(isLogin, forKey: APPStorageName.isLogin);
+        set{
+
+            UserDefaults.standard.set(newValue, forKey: APPStorageName.isLogin);
             UserDefaults.standard.synchronize();
         }
+        
+        
         
         get {
             
@@ -29,5 +31,21 @@ class APPHelper: NSObject {
             return isLogin;
         }
     }
+    
+    // 用户信息
+    var loginUserModel:SFLoginUserModel? {
+        
+        set{
+        
+            newValue?.saveObject();
+        }
+        
+        get {
+            
+            return SFLoginUserModel.getLoginUserModel();
+        }
+    }
+    
+    
     
 }
