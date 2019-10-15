@@ -39,9 +39,9 @@ class SFHomeCell: UITableViewCell {
     
     
     // 2. 声明一个闭包变量
-    var clickBuyBtnBlock:ClickBuyBtnBlock?;
+    private var clickBuyBtnBlock:ClickBuyBtnBlock?;
     
-    var clickMoreBlock:ClickMoreBlock?;
+    private var clickMoreBlock:ClickMoreBlock?;
     
     
     // 3. 定义一个方法,方法的参数为和ClickBuyBtnBlock类型一致的闭包,并赋值给callBack  逃逸闭包
@@ -53,6 +53,8 @@ class SFHomeCell: UITableViewCell {
         
         clickMoreBlock = block;
     }
+    
+    
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -108,6 +110,8 @@ class SFHomeCell: UITableViewCell {
             
             dategate?.degateNeedDo(str: "代理方法过来的");
         }
+        
+        
     }
     
     // MARK:(外部调用方法)

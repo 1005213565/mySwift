@@ -21,18 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true;
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         //初始化tabbar
-        
-//        let isLogin = UserDefaults.standard.bool(forKey: APPStorageName.isLogin);
-        
-//        if APPHelper.shared.isLogin == true {
-//
-//            let tabbarVC = SFTabBarController()
-//            self.window!.rootViewController = tabbarVC
-//        }else {
+    
+        if APPHelper.shared.isLogin == true {
+
+            let tabbarVC = SFTabBarController()
+            self.window!.rootViewController = tabbarVC
+        }else {
         
             let loginVC = SFLoginVC()
             self.window!.rootViewController = loginVC
-//        }
+        }
         
         self.window!.makeKeyAndVisible()
         

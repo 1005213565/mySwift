@@ -81,23 +81,16 @@ class SFLoginVC: UIViewController {
     // MARK:---按钮的点击方法---
     @objc func loginBtnAction() {
         
-
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "client-type": "sxyUIT2jE"
-        ]
-
-        Alamofire.request("http://gw-debug.istarguide.com/user/user/loginByPhone", method:.post, parameters: ["mobile":"18392475589","password":"8a6f2805b4515ac12058e79e66539be9","zone":"86"], encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
-            // 失败 FAILURE   成功SUCCESS
-            print("登录结果==\(response.value!)");
+        SFBaseNetworking.requstData(.post, url: "http://gw-debug.istarguide.com/user/user/loginByPhone", parameters: ["mobile":"18392475589","password":"8a6f2805b4515ac12058e79e66539be9","zone":"86"]) { (response: Any, isSuccess: Bool) in
             
-            if response.result.isSuccess {
+            if isSuccess {
                 
-                let code = (response.value as! Dictionary<String,Any>)["code"];
                 
-                if code as! Int == 0 { // 将code转换为Int类型
+                let code = (response as! Dictionary<String,Any>)["code"];
                 
-                    var tempData:Dictionary<String,Any> = response.value as! Dictionary<String,Any>
+                if code != nil && code as! Int == 0 { // 将code转换为Int类型
+                    
+                    var tempData:Dictionary<String,Any> = response as! Dictionary<String,Any>
                     let tempDic = tempData["data"];
                     
                     // 使用HandyJSON将字典转换为model
@@ -105,12 +98,49 @@ class SFLoginVC: UIViewController {
                     // 存储用户登录信息
                     APPHelper.shared.loginUserModel = loginModel;
                     
+                    
+                    // 登录成功本地存储登录成功
+                    APPHelper.shared.isLogin = true;
+                    
                     print("转换成功的model==\(String(describing: loginModel?.id!)) \(String(describing: loginModel?.gender)) \(String(describing: loginModel?.nick))");
+                    
+                    let tabBarVC = SFTabBarController();
+                    UIApplication.shared.delegate?.window??.rootViewController = tabBarVC;
+
                 }
-                
             }
-            
         }
+
+//        let headers: HTTPHeaders = [
+//            "Content-Type": "application/json",
+//            "client-type": "sxyUIT2jE"
+//        ]
+//
+//
+//        Alamofire.request("http://gw-debug.istarguide.com/user/user/loginByPhone", method:.post, parameters: ["mobile":"18392475589","password":"8a6f2805b4515ac12058e79e66539be9","zone":"86"], encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+//            // 失败 FAILURE   成功SUCCESS
+//            print("登录结果==\(response.value!)");
+//
+//            if response.result.isSuccess {
+//
+//                let code = (response.value as! Dictionary<String,Any>)["code"];
+//
+//                if code as! Int == 0 { // 将code转换为Int类型
+//
+//                    var tempData:Dictionary<String,Any> = response.value as! Dictionary<String,Any>
+//                    let tempDic = tempData["data"];
+//
+//                    // 使用HandyJSON将字典转换为model
+//                    let loginModel = SFLoginUserModel.deserialize(from: (tempDic as! Dictionary<String,Any>));
+//                    // 存储用户登录信息
+//                    APPHelper.shared.loginUserModel = loginModel;
+//
+//                    print("转换成功的model==\(String(describing: loginModel?.id!)) \(String(describing: loginModel?.gender)) \(String(describing: loginModel?.nick))");
+//                }
+//
+//            }
+//
+//        }
         
         
 //        let tabBarVC = SFTabBarController();
