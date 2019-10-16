@@ -8,8 +8,10 @@
 
 import UIKit
 import Kingfisher
+import NVActivityIndicatorView
 
-class SFHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,MyDategate {
+
+class SFHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,MyDategate,NVActivityIndicatorViewable {
 
     lazy var homeTableView:UITableView = {
         
@@ -43,6 +45,8 @@ class SFHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,MyDat
         
         
         self.navigationItem.rightBarButtonItems = [rightBtn0,rightBtn1];
+        
+//        self.homeTableView.dg_add
     }
 
     // MARK:---数据请求---
@@ -101,6 +105,14 @@ class SFHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,MyDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print("点击了==\(indexPath)")
+
+        startAnimating(type: NVActivityIndicatorType.ballRotateChase)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            
+            self.stopAnimating();
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -1,4 +1,5 @@
 
+use_frameworks!
 
 target 'swift实践' do
 
@@ -14,5 +15,11 @@ pod 'HandyJSON','5.0.0-beta'
 
 #键盘管理
 pod 'IQKeyboardManagerSwift'
+
+#HUD
+pod 'NVActivityIndicatorView'
+
+# 类似MJFresh的刷新控件
+pod 'DGElasticPullToRefresh'
 
 end
