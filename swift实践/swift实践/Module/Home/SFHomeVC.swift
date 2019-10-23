@@ -10,7 +10,6 @@ import UIKit
 import Kingfisher
 import NVActivityIndicatorView
 
-
 class SFHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,MyDategate,NVActivityIndicatorViewable {
 
     lazy var homeTableView:UITableView = {
@@ -46,11 +45,24 @@ class SFHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,MyDat
         
         self.navigationItem.rightBarButtonItems = [rightBtn0,rightBtn1];
         
-//        self.homeTableView.dg_add
+
+        self.homeTableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {
+            
+            self.refreshData();
+        });
+        
+        self.homeTableView.mj_footer = MJRefreshBackNormalFooter.init(refreshingBlock: {
+        
+            self.loadMoreData()
+        })
+        
     }
 
     // MARK:---数据请求---
     func requestAllData() -> () {
+        
+        startAnimating(type: NVActivityIndicatorType.ballRotateChase)
+        
         
         
         for i in 0..<10 {
@@ -65,6 +77,13 @@ class SFHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,MyDat
         
         self.homeTableView.reloadData();
         print("最终数据=\(self.allArr)")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            
+            self.stopAnimating();
+            self.homeTableView.mj_header.endRefreshing();
+            self.homeTableView.mj_footer.endRefreshing();
+        }
     }
     
 
@@ -105,6 +124,9 @@ class SFHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,MyDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print("点击了==\(indexPath)")
+        
+        
+        
 
         startAnimating(type: NVActivityIndicatorType.ballRotateChase)
         

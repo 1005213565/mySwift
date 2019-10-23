@@ -28,7 +28,15 @@ class SFLoginUserModel: NSObject, HandyJSON, NSCoding {
     var zone:String?; // 所在地区 中国86
     
     
+    // MARK:---HandyJSON必须实现---
+    // HandyJSON需要的
+    required override init(){
+        
+        super.init()
+    }
     
+    
+    // MARK:---归档和解档---
     // 编码object
     func encode(with aCoder: NSCoder) {
         
@@ -72,13 +80,10 @@ class SFLoginUserModel: NSObject, HandyJSON, NSCoding {
     
     
     
-    // HandyJSON需要的
-    required override init(){
-        
-       super.init()
-    }
     
     
+    
+    // MARK:---外部接口---
     // 保存数据
     func saveObject() -> Void {
         

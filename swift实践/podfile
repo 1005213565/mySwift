@@ -20,6 +20,12 @@ pod 'IQKeyboardManagerSwift'
 pod 'NVActivityIndicatorView'
 
 # 类似MJFresh的刷新控件
-pod 'DGElasticPullToRefresh'
+#pod 'DGElasticPullToRefresh'
+
+# 刷新控件
+#pod 'PullToRefresher'
+
+# OC刷新控件，用桥接做刷新吧
+pod 'MJRefresh'
 
 end

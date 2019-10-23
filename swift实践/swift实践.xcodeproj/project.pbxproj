@@ -26,8 +26,8 @@
 		04681270234EDED3003ADA06 /* SFLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0468126E234EDED3003ADA06 /* SFLoginVC.xib */; };
 		04681272234F04D5003ADA06 /* APPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04681271234F04D5003ADA06 /* APPHelper.swift */; };
 		0468127623501760003ADA06 /* SFLoginUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468127523501760003ADA06 /* SFLoginUserModel.swift */; };
+		047B4825235F0051002FAB6F /* SFURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B4824235F0051002FAB6F /* SFURL.swift */; };
 		04DFDEAA2355A7DA00A5DA13 /* SFBaseNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFDEA92355A7DA00A5DA13 /* SFBaseNetworking.swift */; };
-		C0D6E91571919647B5EEE4CB /* Pods_swift__.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67D1B4CAAFF95F938612BB6 /* Pods_swift__.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +52,8 @@
 		0468126E234EDED3003ADA06 /* SFLoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFLoginVC.xib; sourceTree = "<group>"; };
 		04681271234F04D5003ADA06 /* APPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPHelper.swift; sourceTree = "<group>"; };
 		0468127523501760003ADA06 /* SFLoginUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFLoginUserModel.swift; sourceTree = "<group>"; };
+		047B481C235DB8D8002FAB6F /* swift实践-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift实践-Bridging-Header.h"; sourceTree = "<group>"; };
+		047B4824235F0051002FAB6F /* SFURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFURL.swift; sourceTree = "<group>"; };
 		04DFDEA92355A7DA00A5DA13 /* SFBaseNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFBaseNetworking.swift; sourceTree = "<group>"; };
 		695F7A9BAA5F84D9D59BD685 /* Pods-swift实践.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift实践.debug.xcconfig"; path = "Target Support Files/Pods-swift实践/Pods-swift实践.debug.xcconfig"; sourceTree = "<group>"; };
 		B40C4768C61B50088323C39C /* Pods-swift实践.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift实践.release.xcconfig"; path = "Target Support Files/Pods-swift实践/Pods-swift实践.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0D6E91571919647B5EEE4CB /* Pods_swift__.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +159,7 @@
 			children = (
 				04681264234DDEF7003ADA06 /* SFPCH.swift */,
 				04681271234F04D5003ADA06 /* APPHelper.swift */,
+				047B4824235F0051002FAB6F /* SFURL.swift */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -191,6 +193,7 @@
 		04681273234F1824003ADA06 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				047B481B235DB834002FAB6F /* BridgeFile */,
 				04681274234F183B003ADA06 /* Networking */,
 			);
 			path = Tools;
@@ -226,6 +229,14 @@
 				0468126E234EDED3003ADA06 /* SFLoginVC.xib */,
 			);
 			path = vc;
+			sourceTree = "<group>";
+		};
+		047B481B235DB834002FAB6F /* BridgeFile */ = {
+			isa = PBXGroup;
+			children = (
+				047B481C235DB8D8002FAB6F /* swift实践-Bridging-Header.h */,
+			);
+			path = BridgeFile;
 			sourceTree = "<group>";
 		};
 		642E2849178E4C90C2F78A58 /* Frameworks */ = {
@@ -279,6 +290,7 @@
 				TargetAttributes = {
 					04681235234DCE21003ADA06 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -368,6 +380,7 @@
 			files = (
 				04681265234DDEF7003ADA06 /* SFPCH.swift in Sources */,
 				04681272234F04D5003ADA06 /* APPHelper.swift in Sources */,
+				047B4825235F0051002FAB6F /* SFURL.swift in Sources */,
 				0468126A234DE74B003ADA06 /* SFHomeCell.swift in Sources */,
 				0468125E234DCF1A003ADA06 /* SFTabBarController.swift in Sources */,
 				04DFDEAA2355A7DA00A5DA13 /* SFBaseNetworking.swift in Sources */,
@@ -528,6 +541,7 @@
 					arm64e,
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4BRGNQJ5J;
 				GCC_PREFIX_HEADER = "";
@@ -539,7 +553,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "fly.swift--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "swift实践/Tools/BridgeFile/swift实践-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -555,6 +570,7 @@
 					arm64e,
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4BRGNQJ5J;
 				GCC_PREFIX_HEADER = "";
@@ -566,7 +582,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "fly.swift--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "swift实践/Tools/BridgeFile/swift实践-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

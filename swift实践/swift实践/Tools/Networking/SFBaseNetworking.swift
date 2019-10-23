@@ -9,10 +9,6 @@
 import UIKit
 import Alamofire
 
-//enum SFMethodType {
-//    case sfPost
-//    case sfGet
-//}
 
 class SFBaseNetworking: NSObject {
 

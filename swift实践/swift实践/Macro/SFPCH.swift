@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 // MARK:---frame相关---
 enum APPFrme {
     
@@ -23,3 +22,4 @@ enum APPStorageName {
     
     static let isLogin = "SF_IsLogin"
 }
+

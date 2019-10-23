@@ -46,6 +46,19 @@ class APPHelper: NSObject {
         }
     }
     
+    // 域名url
+    var homeUrl:String = "http://gw-debug.istarguide.com"
     
-    
+    // MARK:---方法---
+    // 设置是否使用线上环境，默认是测试环境
+    func useIsDistribution(useDis:Bool) -> () {
+        
+        if useDis {
+            
+            self.homeUrl = "https://gw-prod.istarguide.com";
+        }else {
+            
+            self.homeUrl = "http://gw-debug.istarguide.com";
+        }
+    }
 }
