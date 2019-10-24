@@ -88,7 +88,6 @@ class SFLoginVC: UIViewController,NVActivityIndicatorViewable {
     }
     
     
-    
     // MARK:---网络请求---
     // 登录
     func requestLogin(_ url:String, _ par:[String:Any]) -> () {
