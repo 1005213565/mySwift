@@ -87,6 +87,7 @@ class SFLoginVC: UIViewController,NVActivityIndicatorViewable {
         
     }
     
+    // 我打了tag标签
     
     // MARK:---网络请求---
     // 登录
