@@ -11,6 +11,7 @@
 #import "SFPageBaseScrollView.h"
 #import "UIView+SFFrame.h"
 #import "UIScrollView+SFExtend.h"
+#import "SFPageBaseHederView.h"
 
 @interface SFPageViewController ()<SFPageScrollMenuViewDelegate,UIScrollViewDelegate>
 
@@ -29,6 +30,17 @@
 ///
 @property (nonatomic, strong) SFPageBaseScrollView *pageScrollView;
 
+///
+@property (nonatomic, strong) SFPageBaseScrollView *bgScrollView;
+
+/// 上一个page的位置
+@property (nonatomic, assign) NSInteger lastIndex;
+
+/// 当前将要滑动到的位置或者已经滑到到的位置
+@property (nonatomic, assign) NSInteger currentIndex;
+
+/// 头部视图的背景视图
+@property (nonatomic, strong) SFPageBaseHederView *bgHeaderView;
 @end
 
 @implementation SFPageViewController
@@ -39,6 +51,11 @@
     [self initData];
     [self setupSubViews];
     [self setSelectedPageIndex:self.pageConfig.currentIndex];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
 }
 
 #pragma mark ---初始化---
@@ -64,24 +81,70 @@
 /// 设置子视图
 - (void) setupSubViews {
     
+    [self setupHeaderView];
     [self setupMenuView];
     [self setupPageScrollView];
+}
+
+/// 设置header
+- (void) setupHeaderView {
+    
+    if (self.pageConfig.menuPositionStyle == sfMenuSuspenStyle) {
+        
+        NSAssert(self.headerView, @"头部视图不存在");
+        
+        self.bgHeaderView = [[SFPageBaseHederView alloc] initWithFrame:self.headerView.bounds];
+        [self.bgHeaderView addSubview:self.headerView];
+        
+        [self.bgScrollView addSubview:self.bgHeaderView];
+    }
 }
 
 /// 设置菜单栏
 - (void) setupMenuView {
     
-    SFPageScrollMenuView *menuView = [SFPageScrollMenuView pagescrollMenuViewWithFrame:CGRectMake(0, 0, self.pageConfig.menuWidth, self.pageConfig.menuHeight) titles:self.titles configration:self.pageConfig delegate:self currentIndex:self.pageConfig.currentIndex];
+    CGFloat menuViewY = 0;
+    if (self.pageConfig.menuPositionStyle == sfMenuSuspenStyle) {
+        
+        menuViewY = self.bgHeaderView.sf_bottom;
+    }else if (self.pageConfig.menuPositionStyle == sfMenuTopStyle) {
+        
+        menuViewY = 0;
+    }
+    
+    SFPageScrollMenuView *menuView = [SFPageScrollMenuView pagescrollMenuViewWithFrame:CGRectMake(0, menuViewY, self.pageConfig.menuWidth, self.pageConfig.menuHeight) titles:self.titles configration:self.pageConfig delegate:self currentIndex:self.pageConfig.currentIndex];
     self.menuView = menuView;
-    [self.view addSubview:self.menuView];
+    
+    if (self.pageConfig.menuPositionStyle == sfMenuSuspenStyle) {
+        
+        [self.bgScrollView addSubview:self.menuView];
+    }else if (self.pageConfig.menuPositionStyle == sfMenuTopStyle) {
+        
+        [self.view addSubview:self.menuView];
+    }
+    
 }
 
 /// 设置pageScrollView
 - (void) setupPageScrollView {
     
+    
+    
     self.pageScrollView.frame = CGRectMake(0, self.menuView.sf_bottom, self.pageConfig.pageScrollViewWidth, self.pageConfig.pageScrollViewHeight);
     self.pageScrollView.contentSize = CGSizeMake(self.pageConfig.pageScrollViewWidth * self.titles.count, self.pageConfig.pageScrollViewHeight);
-    [self.view addSubview:self.pageScrollView];
+    
+    if (self.pageConfig.menuPositionStyle == sfMenuSuspenStyle) {
+        
+        [self.bgScrollView addSubview:self.pageScrollView];
+        
+        self.bgScrollView.frame = CGRectMake(0, 0, self.pageConfig.bgScrollViewWidth, self.pageConfig.bgScrollViewHeight);
+        self.bgScrollView.contentSize = CGSizeMake(self.pageConfig.bgScrollViewWidth, self.pageScrollView.sf_bottom);
+        [self.view addSubview:self.bgScrollView];
+    }else if (self.pageConfig.menuPositionStyle == sfMenuTopStyle) {
+        
+        [self.view addSubview:self.pageScrollView];;
+    }
+    
 }
 
 /// 初始化数据
@@ -111,21 +174,17 @@
     [self.pageScrollView addSubview:childController.view];
 }
 
+/// 移除子控制器
+- (void) removeSFChildViewController:(UIViewController *)childController  {
+
+    [childController.view removeFromSuperview];
+    [childController removeFromParentViewController];
+    [childController willMoveToParentViewController:nil];
+}
+
 #pragma mark ---外部方法---
 /// 设置选中的pageView
 - (void)setSelectedPageIndex:(NSInteger)pageIndex {
-//    if (self.cacheDictM.count > 0 && pageIndex == self.pageIndex) return;
-//
-//    if (pageIndex > self.controllersM.count - 1) return;
-//
-//    CGRect frame = CGRectMake(self.pageScrollView.yn_width * pageIndex, 0, self.pageScrollView.yn_width, self.pageScrollView.yn_height);
-//    if (frame.origin.x == self.pageScrollView.contentOffset.x) {
-//        [self scrollViewDidScroll:self.pageScrollView];
-//    } else {
-//        [self.pageScrollView scrollRectToVisible:frame animated:NO];
-//    }
-//
-//    [self scrollViewDidEndDecelerating:self.pageScrollView];
     
     /// scrollView平移位置
     CGFloat offset_X = pageIndex*self.pageConfig.pageScrollViewWidth;
@@ -135,6 +194,13 @@
     /// 添加视图控制器
     UIViewController *currentVC = self.childVCMArr[pageIndex];
     [self addChildViewController:currentVC offsetX:offset_X];
+    
+    // 移除上一个视图控制器
+    if (self.currentIndex != self.lastIndex) {
+        
+        UIViewController *lastVC = self.childVCMArr[self.lastIndex];
+        [self removeSFChildViewController:lastVC];
+    }
 }
 
 
@@ -145,57 +211,125 @@
 }
 
 #pragma mark ---UIScrollViewDelegate---
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    CGFloat indexD = 1.0*scrollView.contentOffset.x/self.pageConfig.pageScrollViewWidth;
-    NSInteger currentIndex = 0;
-    // 向右滑动需要向下取整
-    if (self.pageScrollView.isScrollRightDirection) {
+
+    if (scrollView == self.pageScrollView) {
         
-        currentIndex = floor(indexD);
-    }else {
+        if (self.pageScrollView.beginOffsetX > scrollView.contentOffset.x) {
+            
+            self.pageScrollView.isScrollRightDirection = YES;
+            //        NSLog(@"向右滚动");
+        }else {
+            
+            self.pageScrollView.isScrollRightDirection = NO;
+            //        NSLog(@"向左滚动");
+        }
         
-        // 向左滑动需要向上取整
-        currentIndex = ceilf(indexD);
+        CGFloat indexD = 1.0*scrollView.contentOffset.x/self.pageConfig.pageScrollViewWidth;
+        NSInteger currentIndex = 0;
+        CGFloat progress = 0.0;
+        NSInteger lastIndex = 0;
+        // 向右滑动需要向下取整
+        if (self.pageScrollView.isScrollRightDirection) {
+            
+            currentIndex = floor(indexD);
+            if (currentIndex < 0) {
+                
+                currentIndex = 0;
+                progress = 0;
+                lastIndex = 0;
+            }else {
+                
+                progress = currentIndex + 1 - indexD;
+                if (currentIndex == self.childVCMArr.count - 1) {
+                    
+                    lastIndex = currentIndex;
+                }else {
+                    
+                    lastIndex = currentIndex + 1;
+                }
+                
+            }
+            
+            
+        }else {
+            
+            // 向左滑动需要向上取整
+            currentIndex = ceilf(indexD);
+            if (currentIndex > self.childVCMArr.count - 1) {
+                
+                currentIndex = self.childVCMArr.count - 1;
+                progress = 0;
+                lastIndex = currentIndex;
+            }else {
+                
+                progress = 1 - (currentIndex - indexD);
+                if (currentIndex == 0) {
+                    
+                    lastIndex = 0;
+                }else {
+                    
+                    lastIndex = currentIndex - 1;
+                }
+                
+            }
+        }
+        
+        //    NSLog(@"当前的位置===%zd,真实数据===%f, 上一个位置===%zd",currentIndex,indexD,lastIndex);
+        
+        // 菜单栏的item和lineView 实时移动
+        [self.menuView willSelectItemIndex:currentIndex lastItemIndex:lastIndex progress:progress];
+        
+        
+        /// 添加视图控制器
+        //    [self setSelectedPageIndex:currentIndex];
+        /// 添加视图控制器
+        CGFloat offset_X = currentIndex*self.pageConfig.pageScrollViewWidth;
+        UIViewController *currentVC = self.childVCMArr[currentIndex];
+        [self addChildViewController:currentVC offsetX:offset_X];
+        
+        
+        self.currentIndex = currentIndex;
+        self.lastIndex = lastIndex;
+        /// 滚动结束的记录位置
+        self.pageScrollView.beginOffsetX = scrollView.contentOffset.x;
+    }else if (scrollView == self.bgScrollView) {
+        
+        
+        if (scrollView.contentOffset.y >= self.bgHeaderView.sf_height) {
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeScrollEnable" object:@{@"scrollEnable":@(YES)}];
+        }else {
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeScrollEnable" object:@{@"scrollEnable":@(NO)}];
+        }
     }
     
-    NSLog(@"当前的位置===%zd,真实数据===%f",currentIndex,indexD);
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;      {
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView  {
     
-    NSInteger currentIndex = round(1.0*scrollView.contentOffset.x/self.pageConfig.pageScrollViewWidth);
-    
-    // 菜单栏改变
-    [self.menuView selectedItemIndex:currentIndex animated:YES];
-    
-    
-    /// 添加视图控制器
-    [self setSelectedPageIndex:currentIndex];
 
+    if (scrollView == self.pageScrollView) {
+        
+        // 移除上一个子视图
+        if (self.currentIndex != self.lastIndex) { // 如果位置是第一个或最后一个向边界滑动就不移除
+            
+            UIViewController *lastVC = self.childVCMArr[self.lastIndex];
+            [self removeSFChildViewController:lastVC];
+        }
+    }else if (scrollView == self.bgScrollView) {
+        
+        
+    }
 }
 
-// called on start of dragging (may require some time and or distance to move)
-//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView;
-//
-//// called on finger up if the user dragged. velocity is in points/millisecond. targetContentOffset may be changed to adjust where the scroll view comes to rest
-//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0);
-//
-//
-//// called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
-//
-//- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView;   // called on finger up as we are moving
-//
-//
-//- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView; // called when setContentOffset/scrollRectVisible:animated: finishes. not called if not animating
-//
-//
-//- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView;   // return a yes if you want to scroll to the top. if not defined, assumes YES
-//
-//- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView;      // called when scrolling animation finished. may be called immediately if already at top
-
-
+#pragma mark ---set方法---
+- (void)setHeaderView:(UIView *)headerView {
+    _headerView = headerView;
+}
 
 #pragma mark ---懒加载---
 - (NSMutableArray *)childVCMArr {
@@ -233,6 +367,17 @@
         _pageScrollView.delegate = self;
     }
     return _pageScrollView;
+}
+
+- (SFPageBaseScrollView *)bgScrollView {
+    
+    if (!_bgScrollView) {
+        
+        _bgScrollView = [[SFPageBaseScrollView alloc] init];
+        _bgScrollView.delegate = self;
+        _bgScrollView.bounces = NO;
+    }
+    return _bgScrollView;
 }
 
 @end

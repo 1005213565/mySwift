@@ -9,6 +9,17 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+/// 菜单栏位置风格
+typedef enum : NSUInteger {
+    
+    /// 菜单栏悬浮样式
+    sfMenuSuspenStyle,
+    
+    /// 菜单栏在顶部不动样式
+    sfMenuTopStyle,
+} SFMenuStyle;
+
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SFPageConfig : NSObject
@@ -23,6 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 菜单栏宽度  默认屏幕宽
 @property (nonatomic, assign) CGFloat menuWidth;
 
+/*! 菜单栏位置风格 默认sfMenuTopStyle*/
+@property (nonatomic, assign) SFMenuStyle menuPositionStyle;
+
+/*! 菜单栏悬浮的时候距离顶部的距离 默认导航栏的高度   */
+@property (nonatomic, assign) CGFloat menuSuspenTopDistance;
 
 #pragma mark ---scrollviewMenum---
 /// 菜单栏 scrollview背景颜色 默认 white
@@ -77,6 +93,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 滚动视图宽  默认是屏幕宽
 @property (nonatomic, assign) CGFloat pageScrollViewWidth;
+
+#pragma mark ---bgScrollView---
+/// 悬浮菜单bg滚动视图高  默认是 屏幕高度
+@property (nonatomic, assign) CGFloat bgScrollViewHeight;
+
+/// 悬浮菜单bg滚动视图宽  默认是屏幕宽
+@property (nonatomic, assign) CGFloat bgScrollViewWidth;
 
 @end
 

@@ -44,6 +44,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)selectedItemIndex:(NSInteger)index
                  animated:(BOOL)animated;
 
+
+/**
+ index: 将要选中的index的位置
+ lastItemIndex: 上一个选中的index的位置
+ progress: 当前index的百分比
+ */
+- (void) willSelectItemIndex:(NSInteger)index lastItemIndex:(NSInteger)lastItemIndex progress:(CGFloat)progress;
+
 @end
 
 NS_ASSUME_NONNULL_END

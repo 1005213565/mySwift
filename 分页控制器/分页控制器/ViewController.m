@@ -10,6 +10,7 @@
 #import "SFPageScrollMenuView.h"
 #import "TestViewController.h"
 #import "SFPageViewController.h"
+#import "SFSlideShadowAnimation.h"
 
 @interface ViewController ()<SFPageScrollMenuViewDelegate>
 
@@ -34,12 +35,24 @@
     config.isTranslationItemCenter = YES;
     config.menuScrollViewBgColor = [UIColor greenColor];
     config.currentIndex = 2;
+    config.bottomLineHeight = 3;
+    config.pageScrollViewHeight = screenHeight - 50 - 64;
+    config.menuPositionStyle = sfMenuSuspenStyle;
+    config.bgScrollViewHeight = screenHeight - 64;
+    
 //    SFPageScrollMenuView *menuView = [SFPageScrollMenuView pagescrollMenuViewWithFrame:CGRectMake(0, 64, screenWidth, 50) titles:@[@"标",@"标题二啊哈",@"标题三",@"标题一开始大幅静安",@"标题二",@"头条",@"标题一",@"推荐",@"标题三"].mutableCopy configration:config delegate:self currentIndex:2];
 //    menuView.backgroundColor = [UIColor greenColor];
 //    [self.view addSubview:menuView];
     
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 200)];
+    headerView.backgroundColor = [UIColor redColor];
+    
+    
     SFPageViewController *pageVC = [SFPageViewController pageViewControllerWithControllers:[self getControllers] titles:[self getTitles] config:config];
-    pageVC.view.frame = CGRectMake(0, 0, screenWidth, screenHeight);
+    pageVC.headerView = headerView;
+    pageVC.view.frame = CGRectMake(0, 64, screenWidth, screenHeight - 64);
+    
     [self addChildViewController:pageVC];
     [pageVC didMoveToParentViewController:self];
     [self.view addSubview:pageVC.view];
@@ -63,6 +76,8 @@
 //    [self.testVC.view removeFromSuperview];
 //    [self.testVC willMoveToParentViewController:nil];
 //    [self.testVC removeFromParentViewController];
+    
+    
 }
 
 - (TestViewController *)testVC {
@@ -89,12 +104,13 @@
     fourVC.view.backgroundColor = [UIColor blueColor];
     
     
+    
     return @[oneVC,twoVC,thirdVC,fourVC];
 }
 
 - (NSArray *)getTitles {
     
-    return @[@"推荐",@"精选",@"你喜欢的",@"美妆秀"];
+    return @[@"推荐",@"精选",@"你喜",@"美妆"];
 }
 
 @end

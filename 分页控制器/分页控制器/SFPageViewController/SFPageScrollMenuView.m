@@ -8,6 +8,7 @@
 
 #import "SFPageScrollMenuView.h"
 #import "UIView+SFFrame.h"
+#import "SFPageTool.h"
 
 @interface SFPageScrollMenuView ()<UITableViewDelegate>
 
@@ -371,6 +372,8 @@
     
 }
 
+
+
 #pragma mark ---外部接口---
 /// 选中下标
 - (void)selectedItemIndex:(NSInteger)index
@@ -379,6 +382,110 @@
     self.lastIndex = self.currentIndex;
     self.currentIndex = index;
     [self adjustItemAnimate:animated];
+}
+
+/**
+ index: 将要选中的index的位置
+ lastItemIndex: 上一个选中的index的位置
+ progress: 当前index的百分比
+ */
+- (void) willSelectItemIndex:(NSInteger)index lastItemIndex:(NSInteger)lastItemIndex progress:(CGFloat)progress {
+    
+//    NSLog(@"index:%zd   lastIndex:%zd    百分比：%lf",index,lastItemIndex, progress);
+    
+    
+    
+    
+    // 线条位置设置
+    if (self.pageConfig.isShowBottomLine) {
+        
+        if (index == lastItemIndex) { // 在左边界或右边界
+            
+            return;
+        }
+        UIButton *selectBtn = self.itemBtnMArr[index];
+        UIButton *lastBtn = self.itemBtnMArr[lastItemIndex];
+
+        CGFloat lineWidth = 0;
+        CGFloat lineX = 0;
+
+        if (self.pageConfig.isAllItemAverageMenum) {
+
+
+            lineWidth = self.itemMaxWidth + self.pageConfig.itemExtendWidth;
+            if (lineWidth*self.itemBtnMArr.count < self.sf_width) {
+
+                lineWidth = self.sf_width/self.itemBtnMArr.count;
+            }
+            
+            if (lastItemIndex > index) { // 向右移动的
+                
+                lineX = lastBtn.sf_x -  selectBtn.sf_width*progress;
+            }else { // 向左移动
+                
+                lineX = lastBtn.sf_x +  lastBtn.sf_width*progress;
+            }
+            
+        }else {
+
+            if (lastItemIndex > index) { // 向右移动的
+                
+                lineX = lastBtn.sf_x -  (selectBtn.sf_width + self.pageConfig.itemLeftMargin)*progress;
+            }else { // 向左移动
+                
+                lineX = lastBtn.sf_x +  (lastBtn.sf_width + self.pageConfig.itemLeftMargin)*progress;
+            }
+            if (progress == 1) {
+                
+                lineWidth = selectBtn.sf_width; // 缩放后的宽
+                self.bottomLine.sf_width = lineWidth;
+            }
+        }
+
+        self.bottomLine.sf_x = lineX;
+    }
+    
+    /// 标题颜色和缩放变化
+    [self.itemBtnMArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        UIButton *itemBtn = (UIButton *)obj;
+        if (idx == index) {
+            
+            // 当天按钮
+            [itemBtn setTitleColor:[SFPageTool transformColor:self.pageConfig.itemTitleSelectColorNormal progress:progress] forState:UIControlStateNormal];
+            
+            CGFloat scale = (self.pageConfig.itemSelectMaxScale - 1)*progress + 1;
+            
+            itemBtn.transform = CGAffineTransformMakeScale(scale, scale);
+        }else if (idx == lastItemIndex) {
+            
+            // 上一个按钮
+            [itemBtn setTitleColor:[SFPageTool transformColor:self.pageConfig.itemTitleSelectColorNormal progress:1 - progress] forState:UIControlStateNormal];
+            
+            CGFloat scale = (self.pageConfig.itemSelectMaxScale - 1)*(1 - progress) + 1;
+            
+            itemBtn.transform = CGAffineTransformMakeScale(scale, scale);
+        }else {
+            
+            [itemBtn setTitleColor:self.pageConfig.itemTitleColorNormal forState:UIControlStateNormal];
+            itemBtn.transform = CGAffineTransformMakeScale(1, 1);
+        }
+        
+    }];
+
+    
+    // 平移item到中间
+    if (self.pageConfig.isTranslationItemCenter) {
+        
+        [self translationItemToCenter];
+    }
+    
+    
+    /// 最终停下来的时候记录位置
+    if (progress == 1) {
+        
+        self.currentIndex = index;
+    }
 }
 
 #pragma mark ---按钮的点击方法---

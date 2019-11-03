@@ -7,6 +7,7 @@
 //
 
 #import "SFPageConfig.h"
+#import "SFPageTool.h"
 
 @implementation SFPageConfig
 
@@ -19,6 +20,8 @@
         
         self.menuHeight = 50;
         self.menuWidth = [UIScreen mainScreen].bounds.size.width;
+        self.menuPositionStyle = sfMenuTopStyle;
+        self.menuSuspenTopDistance = [SFPageTool navigationBarHeight];
         
         self.isTranslationItemCenter = NO;
         self.itemSelectMaxScale = 1;
@@ -37,6 +40,9 @@
         
         self.pageScrollViewWidth = [UIScreen mainScreen].bounds.size.width;
         self.pageScrollViewHeight = [UIScreen mainScreen].bounds.size.height - 50;
+        
+        self.bgScrollViewWidth = [UIScreen mainScreen].bounds.size.width;
+        self.bgScrollViewHeight = [UIScreen mainScreen].bounds.size.height;
     }
     return self;
 }

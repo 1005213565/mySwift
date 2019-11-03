@@ -11,6 +11,10 @@
 		0415DD8C236BD7950024681F /* SFPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415DD8B236BD7950024681F /* SFPageViewController.m */; };
 		0415DD91236BDFAD0024681F /* SFPageBaseScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415DD90236BDFAD0024681F /* SFPageBaseScrollView.m */; };
 		0415DD94236C18CE0024681F /* UIScrollView+SFExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415DD93236C18CE0024681F /* UIScrollView+SFExtend.m */; };
+		04701A38236D410600E0CBBF /* SFSlideShadowAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04701A36236D410600E0CBBF /* SFSlideShadowAnimation.m */; };
+		04701A3C236D6DFB00E0CBBF /* SFPageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04701A3B236D6DFB00E0CBBF /* SFPageTool.m */; };
+		04701A3F236D8E2C00E0CBBF /* SFPageBaseHederView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04701A3E236D8E2C00E0CBBF /* SFPageBaseHederView.m */; };
+		04701A42236EA05200E0CBBF /* SFPageBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04701A41236EA05200E0CBBF /* SFPageBaseTableView.m */; };
 		04EB0D732369833F00202647 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0D722369833F00202647 /* AppDelegate.m */; };
 		04EB0D762369833F00202647 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0D752369833F00202647 /* ViewController.m */; };
 		04EB0D792369833F00202647 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EB0D772369833F00202647 /* Main.storyboard */; };
@@ -31,6 +35,14 @@
 		0415DD90236BDFAD0024681F /* SFPageBaseScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPageBaseScrollView.m; sourceTree = "<group>"; };
 		0415DD92236C18CE0024681F /* UIScrollView+SFExtend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SFExtend.h"; sourceTree = "<group>"; };
 		0415DD93236C18CE0024681F /* UIScrollView+SFExtend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SFExtend.m"; sourceTree = "<group>"; };
+		04701A36236D410600E0CBBF /* SFSlideShadowAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSlideShadowAnimation.m; sourceTree = "<group>"; };
+		04701A37236D410600E0CBBF /* SFSlideShadowAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSlideShadowAnimation.h; sourceTree = "<group>"; };
+		04701A3A236D6DFB00E0CBBF /* SFPageTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFPageTool.h; sourceTree = "<group>"; };
+		04701A3B236D6DFB00E0CBBF /* SFPageTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPageTool.m; sourceTree = "<group>"; };
+		04701A3D236D8E2C00E0CBBF /* SFPageBaseHederView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFPageBaseHederView.h; sourceTree = "<group>"; };
+		04701A3E236D8E2C00E0CBBF /* SFPageBaseHederView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPageBaseHederView.m; sourceTree = "<group>"; };
+		04701A40236EA05200E0CBBF /* SFPageBaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFPageBaseTableView.h; sourceTree = "<group>"; };
+		04701A41236EA05200E0CBBF /* SFPageBaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPageBaseTableView.m; sourceTree = "<group>"; };
 		04EB0D6E2369833F00202647 /* 分页控制器.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "分页控制器.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EB0D712369833F00202647 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04EB0D722369833F00202647 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -76,8 +88,30 @@
 			children = (
 				0415DD8F236BDFAD0024681F /* SFPageBaseScrollView.h */,
 				0415DD90236BDFAD0024681F /* SFPageBaseScrollView.m */,
+				04701A3D236D8E2C00E0CBBF /* SFPageBaseHederView.h */,
+				04701A3E236D8E2C00E0CBBF /* SFPageBaseHederView.m */,
+				04701A40236EA05200E0CBBF /* SFPageBaseTableView.h */,
+				04701A41236EA05200E0CBBF /* SFPageBaseTableView.m */,
 			);
 			path = BaseView;
+			sourceTree = "<group>";
+		};
+		04701A35236D410600E0CBBF /* SFSlideShadowAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				04701A37236D410600E0CBBF /* SFSlideShadowAnimation.h */,
+				04701A36236D410600E0CBBF /* SFSlideShadowAnimation.m */,
+			);
+			path = SFSlideShadowAnimation;
+			sourceTree = "<group>";
+		};
+		04701A39236D6DD300E0CBBF /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				04701A3A236D6DFB00E0CBBF /* SFPageTool.h */,
+				04701A3B236D6DFB00E0CBBF /* SFPageTool.m */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		04EB0D652369833F00202647 = {
@@ -101,6 +135,7 @@
 			children = (
 				04EB0D712369833F00202647 /* AppDelegate.h */,
 				04EB0D722369833F00202647 /* AppDelegate.m */,
+				04701A35236D410600E0CBBF /* SFSlideShadowAnimation */,
 				04EB0D742369833F00202647 /* ViewController.h */,
 				04EB0D752369833F00202647 /* ViewController.m */,
 				0415DD86236BCFF70024681F /* TestViewController.h */,
@@ -118,6 +153,7 @@
 		04EB0D872369836800202647 /* SFPageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04701A39236D6DD300E0CBBF /* Tools */,
 				0415DD8D236BDF6C0024681F /* BaseView */,
 				0415DD89236BD7550024681F /* Category */,
 				04EB0D88236983A700202647 /* SFPageScrollMenuView.h */,
@@ -200,9 +236,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04701A42236EA05200E0CBBF /* SFPageBaseTableView.m in Sources */,
+				04701A3F236D8E2C00E0CBBF /* SFPageBaseHederView.m in Sources */,
 				04EB0D762369833F00202647 /* ViewController.m in Sources */,
 				04EB0D8D236983EC00202647 /* SFPageConfig.m in Sources */,
 				0415DD94236C18CE0024681F /* UIScrollView+SFExtend.m in Sources */,
+				04701A38236D410600E0CBBF /* SFSlideShadowAnimation.m in Sources */,
 				0415DD91236BDFAD0024681F /* SFPageBaseScrollView.m in Sources */,
 				0415DD88236BCFF70024681F /* TestViewController.m in Sources */,
 				04EB0D812369834100202647 /* main.m in Sources */,
@@ -210,6 +249,7 @@
 				04EB0D8A236983A700202647 /* SFPageScrollMenuView.m in Sources */,
 				0415DD8C236BD7950024681F /* SFPageViewController.m in Sources */,
 				04EB0D732369833F00202647 /* AppDelegate.m in Sources */,
+				04701A3C236D6DFB00E0CBBF /* SFPageTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

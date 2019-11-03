@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SFPageViewController : UIViewController
 
+/// 头部headerView
+@property (nonatomic, strong) UIView *headerView;
+
 /**
  初始化方法
  @param controllers 子控制器
