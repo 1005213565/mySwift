@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 开始拖拽的X位置
 @property (nonatomic, assign) CGFloat beginOffsetX;
 
+/*! 是否支持多个手势  */
+@property (nonatomic, assign) BOOL isSupportMultipleGesture;
 @end
 
 NS_ASSUME_NONNULL_END

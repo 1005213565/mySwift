@@ -58,6 +58,7 @@
     
 }
 
+
 #pragma mark ---初始化---
 /**
  初始化方法
@@ -212,6 +213,11 @@
 
 #pragma mark ---UIScrollViewDelegate---
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    
+    NSLog(@"开始拖拽==%@",scrollView);
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
 
@@ -300,10 +306,10 @@
         
         if (scrollView.contentOffset.y >= self.bgHeaderView.sf_height) {
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeScrollEnable" object:@{@"scrollEnable":@(YES)}];
+            
         }else {
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeScrollEnable" object:@{@"scrollEnable":@(NO)}];
+            
         }
     }
     

@@ -27,7 +27,7 @@
     [self.myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.myTableView];
     
-    self.myTableView.scrollEnabled = NO;
+//    self.myTableView.scrollEnabled = NO;
     NSLog(@"视图已经加载");
 }
 
@@ -62,25 +62,5 @@
     return 70;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    if (scrollView.contentOffset.y <= 0) {
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"scrollSupportMultipleGesture" object:@{@"supportMultiple":@(YES)}];
-    }else {
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"scrollSupportMultipleGesture" object:@{@"supportMultiple":@(NO)}];
-    }
-    
-}
-
-- (void) changeScrollEnable:(NSNotification *)sender {
-    
-    NSDictionary *dic = sender.object;
-    
-        
-    self.myTableView.scrollEnabled = [dic[@"scrollEnable"] boolValue];
-    
-}
 
 @end
