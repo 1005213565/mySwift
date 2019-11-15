@@ -12,6 +12,8 @@
 #import "UIView+SFFrame.h"
 #import "UIScrollView+SFExtend.h"
 #import "SFPageBaseHederView.h"
+#import "SFPageBaseTableView.h"
+#import "SFPageBaseBGScrollView.h"
 
 @interface SFPageViewController ()<SFPageScrollMenuViewDelegate,UIScrollViewDelegate>
 
@@ -31,7 +33,7 @@
 @property (nonatomic, strong) SFPageBaseScrollView *pageScrollView;
 
 ///
-@property (nonatomic, strong) SFPageBaseScrollView *bgScrollView;
+@property (nonatomic, strong) SFPageBaseBGScrollView *bgScrollView;
 
 /// 上一个page的位置
 @property (nonatomic, assign) NSInteger lastIndex;
@@ -41,6 +43,10 @@
 
 /// 头部视图的背景视图
 @property (nonatomic, strong) SFPageBaseHederView *bgHeaderView;
+
+
+@property (nonatomic, strong) UITableView *subTableView;
+
 @end
 
 @implementation SFPageViewController
@@ -304,6 +310,36 @@
     }else if (scrollView == self.bgScrollView) {
         
         
+        
+        UIViewController *childVC = self.childVCMArr[self.currentIndex];
+        __block UIScrollView *subScrollView = nil;
+        [childVC.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            if ([obj isKindOfClass:[UIScrollView class]]) {
+                
+                subScrollView = obj;
+            }
+        }];
+        
+        if ([subScrollView isKindOfClass:[UITableView class]]) {
+            
+
+            
+            SFPageBaseTableView *subTableView = (SFPageBaseTableView *)subScrollView;
+            CGFloat bgScrollOffset_y = self.bgScrollView.contentOffsetY;
+            if (bgScrollOffset_y < self.bgHeaderView.sf_bottom) {
+                
+                subTableView.canScroll = NO;
+            }else {
+                
+                subTableView.canScroll = YES;
+            }
+            
+//            subScrollView.delegate = self;
+            self.subTableView = subTableView;
+        }
+        
+        
         if (scrollView.contentOffset.y >= self.bgHeaderView.sf_height) {
             
             
@@ -311,6 +347,21 @@
             
             
         }
+    }else if (scrollView == self.subTableView) {
+        
+        UIScrollView *subScrollView = scrollView;
+        CGFloat y = subScrollView.contentOffsetY;
+        if ([subScrollView isKindOfClass:[UITableView class]]) {
+            
+            SFPageBaseTableView *subTableView = (SFPageBaseTableView *)subScrollView;
+            if (y >= self.bgHeaderView.sf_bottom) {
+                
+                subTableView.canScroll = NO;
+            }
+        }
+        
+        
+        
     }
     
 }
@@ -375,11 +426,11 @@
     return _pageScrollView;
 }
 
-- (SFPageBaseScrollView *)bgScrollView {
+- (SFPageBaseBGScrollView *)bgScrollView {
     
     if (!_bgScrollView) {
         
-        _bgScrollView = [[SFPageBaseScrollView alloc] init];
+        _bgScrollView = [[SFPageBaseBGScrollView alloc] init];
         _bgScrollView.delegate = self;
         _bgScrollView.bounces = NO;
     }

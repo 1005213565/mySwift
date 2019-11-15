@@ -13,4 +13,5 @@
 /*! 是否支持多个手势  */
 @property (nonatomic, assign) BOOL isSupportMultipleGesture;
 
+@property (nonatomic, assign) BOOL canScroll;
 @end

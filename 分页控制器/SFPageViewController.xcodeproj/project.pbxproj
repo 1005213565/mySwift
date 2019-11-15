@@ -11,10 +11,13 @@
 		0415DD8C236BD7950024681F /* SFPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415DD8B236BD7950024681F /* SFPageViewController.m */; };
 		0415DD91236BDFAD0024681F /* SFPageBaseScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415DD90236BDFAD0024681F /* SFPageBaseScrollView.m */; };
 		0415DD94236C18CE0024681F /* UIScrollView+SFExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415DD93236C18CE0024681F /* UIScrollView+SFExtend.m */; };
+		0422A3D3237A805F000BD1AA /* SFPageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422A3D2237A805F000BD1AA /* SFPageViewControllerTests.m */; };
+		0422A3E1237A807E000BD1AA /* SFPageViewControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422A3E0237A807E000BD1AA /* SFPageViewControllerUITests.m */; };
 		04701A38236D410600E0CBBF /* SFSlideShadowAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04701A36236D410600E0CBBF /* SFSlideShadowAnimation.m */; };
 		04701A3C236D6DFB00E0CBBF /* SFPageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04701A3B236D6DFB00E0CBBF /* SFPageTool.m */; };
 		04701A3F236D8E2C00E0CBBF /* SFPageBaseHederView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04701A3E236D8E2C00E0CBBF /* SFPageBaseHederView.m */; };
 		04701A42236EA05200E0CBBF /* SFPageBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04701A41236EA05200E0CBBF /* SFPageBaseTableView.m */; };
+		04980148237EAEC100A0A2E4 /* SFPageBaseBGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04980147237EAEC100A0A2E4 /* SFPageBaseBGScrollView.m */; };
 		04EB0D732369833F00202647 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0D722369833F00202647 /* AppDelegate.m */; };
 		04EB0D762369833F00202647 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0D752369833F00202647 /* ViewController.m */; };
 		04EB0D792369833F00202647 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EB0D772369833F00202647 /* Main.storyboard */; };
@@ -26,6 +29,23 @@
 		04EB0E15236A7AB500202647 /* UIView+SFFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0E14236A7AB500202647 /* UIView+SFFrame.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0422A3D5237A805F000BD1AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04EB0D662369833F00202647 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04EB0D6D2369833F00202647;
+			remoteInfo = "分页控制器";
+		};
+		0422A3E3237A807E000BD1AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04EB0D662369833F00202647 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04EB0D6D2369833F00202647;
+			remoteInfo = "分页控制器";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0415DD86236BCFF70024681F /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		0415DD87236BCFF70024681F /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
@@ -35,6 +55,12 @@
 		0415DD90236BDFAD0024681F /* SFPageBaseScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPageBaseScrollView.m; sourceTree = "<group>"; };
 		0415DD92236C18CE0024681F /* UIScrollView+SFExtend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SFExtend.h"; sourceTree = "<group>"; };
 		0415DD93236C18CE0024681F /* UIScrollView+SFExtend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SFExtend.m"; sourceTree = "<group>"; };
+		0422A3D0237A805F000BD1AA /* SFPageViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFPageViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0422A3D2237A805F000BD1AA /* SFPageViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPageViewControllerTests.m; sourceTree = "<group>"; };
+		0422A3D4237A805F000BD1AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0422A3DE237A807E000BD1AA /* SFPageViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFPageViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0422A3E0237A807E000BD1AA /* SFPageViewControllerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPageViewControllerUITests.m; sourceTree = "<group>"; };
+		0422A3E2237A807E000BD1AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04701A36236D410600E0CBBF /* SFSlideShadowAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSlideShadowAnimation.m; sourceTree = "<group>"; };
 		04701A37236D410600E0CBBF /* SFSlideShadowAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSlideShadowAnimation.h; sourceTree = "<group>"; };
 		04701A3A236D6DFB00E0CBBF /* SFPageTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFPageTool.h; sourceTree = "<group>"; };
@@ -43,7 +69,9 @@
 		04701A3E236D8E2C00E0CBBF /* SFPageBaseHederView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPageBaseHederView.m; sourceTree = "<group>"; };
 		04701A40236EA05200E0CBBF /* SFPageBaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFPageBaseTableView.h; sourceTree = "<group>"; };
 		04701A41236EA05200E0CBBF /* SFPageBaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPageBaseTableView.m; sourceTree = "<group>"; };
-		04EB0D6E2369833F00202647 /* 分页控制器.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "分页控制器.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04980146237EAEC100A0A2E4 /* SFPageBaseBGScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFPageBaseBGScrollView.h; sourceTree = "<group>"; };
+		04980147237EAEC100A0A2E4 /* SFPageBaseBGScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPageBaseBGScrollView.m; sourceTree = "<group>"; };
+		04EB0D6E2369833F00202647 /* SFPageViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFPageViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EB0D712369833F00202647 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04EB0D722369833F00202647 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		04EB0D742369833F00202647 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -62,6 +90,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0422A3CD237A805F000BD1AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0422A3DB237A807E000BD1AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04EB0D6B2369833F00202647 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,8 +134,28 @@
 				04701A3E236D8E2C00E0CBBF /* SFPageBaseHederView.m */,
 				04701A40236EA05200E0CBBF /* SFPageBaseTableView.h */,
 				04701A41236EA05200E0CBBF /* SFPageBaseTableView.m */,
+				04980146237EAEC100A0A2E4 /* SFPageBaseBGScrollView.h */,
+				04980147237EAEC100A0A2E4 /* SFPageBaseBGScrollView.m */,
 			);
 			path = BaseView;
+			sourceTree = "<group>";
+		};
+		0422A3D1237A805F000BD1AA /* SFPageViewControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				0422A3D2237A805F000BD1AA /* SFPageViewControllerTests.m */,
+				0422A3D4237A805F000BD1AA /* Info.plist */,
+			);
+			path = SFPageViewControllerTests;
+			sourceTree = "<group>";
+		};
+		0422A3DF237A807E000BD1AA /* SFPageViewControllerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0422A3E0237A807E000BD1AA /* SFPageViewControllerUITests.m */,
+				0422A3E2237A807E000BD1AA /* Info.plist */,
+			);
+			path = SFPageViewControllerUITests;
 			sourceTree = "<group>";
 		};
 		04701A35236D410600E0CBBF /* SFSlideShadowAnimation */ = {
@@ -118,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				04EB0D702369833F00202647 /* 分页控制器 */,
+				0422A3D1237A805F000BD1AA /* SFPageViewControllerTests */,
+				0422A3DF237A807E000BD1AA /* SFPageViewControllerUITests */,
 				04EB0D6F2369833F00202647 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,7 +189,9 @@
 		04EB0D6F2369833F00202647 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04EB0D6E2369833F00202647 /* 分页控制器.app */,
+				04EB0D6E2369833F00202647 /* SFPageViewController.app */,
+				0422A3D0237A805F000BD1AA /* SFPageViewControllerTests.xctest */,
+				0422A3DE237A807E000BD1AA /* SFPageViewControllerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,9 +235,45 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04EB0D6D2369833F00202647 /* 分页控制器 */ = {
+		0422A3CF237A805F000BD1AA /* SFPageViewControllerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04EB0D842369834100202647 /* Build configuration list for PBXNativeTarget "分页控制器" */;
+			buildConfigurationList = 0422A3D9237A805F000BD1AA /* Build configuration list for PBXNativeTarget "SFPageViewControllerTests" */;
+			buildPhases = (
+				0422A3CC237A805F000BD1AA /* Sources */,
+				0422A3CD237A805F000BD1AA /* Frameworks */,
+				0422A3CE237A805F000BD1AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0422A3D6237A805F000BD1AA /* PBXTargetDependency */,
+			);
+			name = SFPageViewControllerTests;
+			productName = SFPageViewControllerTests;
+			productReference = 0422A3D0237A805F000BD1AA /* SFPageViewControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0422A3DD237A807E000BD1AA /* SFPageViewControllerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0422A3E5237A807E000BD1AA /* Build configuration list for PBXNativeTarget "SFPageViewControllerUITests" */;
+			buildPhases = (
+				0422A3DA237A807E000BD1AA /* Sources */,
+				0422A3DB237A807E000BD1AA /* Frameworks */,
+				0422A3DC237A807E000BD1AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0422A3E4237A807E000BD1AA /* PBXTargetDependency */,
+			);
+			name = SFPageViewControllerUITests;
+			productName = SFPageViewControllerUITests;
+			productReference = 0422A3DE237A807E000BD1AA /* SFPageViewControllerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		04EB0D6D2369833F00202647 /* SFPageViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04EB0D842369834100202647 /* Build configuration list for PBXNativeTarget "SFPageViewController" */;
 			buildPhases = (
 				04EB0D6A2369833F00202647 /* Sources */,
 				04EB0D6B2369833F00202647 /* Frameworks */,
@@ -181,9 +283,9 @@
 			);
 			dependencies = (
 			);
-			name = "分页控制器";
+			name = SFPageViewController;
 			productName = "分页控制器";
-			productReference = 04EB0D6E2369833F00202647 /* 分页控制器.app */;
+			productReference = 04EB0D6E2369833F00202647 /* SFPageViewController.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -195,12 +297,20 @@
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = mac;
 				TargetAttributes = {
+					0422A3CF237A805F000BD1AA = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 04EB0D6D2369833F00202647;
+					};
+					0422A3DD237A807E000BD1AA = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 04EB0D6D2369833F00202647;
+					};
 					04EB0D6D2369833F00202647 = {
 						CreatedOnToolsVersion = 10.3;
 					};
 				};
 			};
-			buildConfigurationList = 04EB0D692369833F00202647 /* Build configuration list for PBXProject "分页控制器" */;
+			buildConfigurationList = 04EB0D692369833F00202647 /* Build configuration list for PBXProject "SFPageViewController" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -213,12 +323,28 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				04EB0D6D2369833F00202647 /* 分页控制器 */,
+				04EB0D6D2369833F00202647 /* SFPageViewController */,
+				0422A3CF237A805F000BD1AA /* SFPageViewControllerTests */,
+				0422A3DD237A807E000BD1AA /* SFPageViewControllerUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0422A3CE237A805F000BD1AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0422A3DC237A807E000BD1AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04EB0D6C2369833F00202647 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +358,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0422A3CC237A805F000BD1AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0422A3D3237A805F000BD1AA /* SFPageViewControllerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0422A3DA237A807E000BD1AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0422A3E1237A807E000BD1AA /* SFPageViewControllerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04EB0D6A2369833F00202647 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -242,6 +384,7 @@
 				04EB0D8D236983EC00202647 /* SFPageConfig.m in Sources */,
 				0415DD94236C18CE0024681F /* UIScrollView+SFExtend.m in Sources */,
 				04701A38236D410600E0CBBF /* SFSlideShadowAnimation.m in Sources */,
+				04980148237EAEC100A0A2E4 /* SFPageBaseBGScrollView.m in Sources */,
 				0415DD91236BDFAD0024681F /* SFPageBaseScrollView.m in Sources */,
 				0415DD88236BCFF70024681F /* TestViewController.m in Sources */,
 				04EB0D812369834100202647 /* main.m in Sources */,
@@ -254,6 +397,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0422A3D6237A805F000BD1AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04EB0D6D2369833F00202647 /* SFPageViewController */;
+			targetProxy = 0422A3D5237A805F000BD1AA /* PBXContainerItemProxy */;
+		};
+		0422A3E4237A807E000BD1AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04EB0D6D2369833F00202647 /* SFPageViewController */;
+			targetProxy = 0422A3E3237A807E000BD1AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		04EB0D772369833F00202647 /* Main.storyboard */ = {
@@ -275,6 +431,76 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0422A3D7237A805F000BD1AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SFPageViewControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fly.SFPageViewControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SFPageViewController.app/SFPageViewController";
+			};
+			name = Debug;
+		};
+		0422A3D8237A805F000BD1AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SFPageViewControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fly.SFPageViewControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SFPageViewController.app/SFPageViewController";
+			};
+			name = Release;
+		};
+		0422A3E6237A807E000BD1AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SFPageViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fly.SFPageViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "分页控制器";
+			};
+			name = Debug;
+		};
+		0422A3E7237A807E000BD1AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SFPageViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fly.SFPageViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "分页控制器";
+			};
+			name = Release;
+		};
 		04EB0D822369834100202647 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -392,14 +618,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z393ZGZZUY;
+				DEVELOPMENT_TEAM = S4BRGNQJ5J;
 				INFOPLIST_FILE = "分页控制器/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "fly.-----";
+				PRODUCT_BUNDLE_IDENTIFIER = fly.SFPageViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -410,14 +636,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z393ZGZZUY;
+				DEVELOPMENT_TEAM = S4BRGNQJ5J;
 				INFOPLIST_FILE = "分页控制器/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "fly.-----";
+				PRODUCT_BUNDLE_IDENTIFIER = fly.SFPageViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -426,7 +652,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04EB0D692369833F00202647 /* Build configuration list for PBXProject "分页控制器" */ = {
+		0422A3D9237A805F000BD1AA /* Build configuration list for PBXNativeTarget "SFPageViewControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0422A3D7237A805F000BD1AA /* Debug */,
+				0422A3D8237A805F000BD1AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0422A3E5237A807E000BD1AA /* Build configuration list for PBXNativeTarget "SFPageViewControllerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0422A3E6237A807E000BD1AA /* Debug */,
+				0422A3E7237A807E000BD1AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04EB0D692369833F00202647 /* Build configuration list for PBXProject "SFPageViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04EB0D822369834100202647 /* Debug */,
@@ -435,7 +679,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04EB0D842369834100202647 /* Build configuration list for PBXNativeTarget "分页控制器" */ = {
+		04EB0D842369834100202647 /* Build configuration list for PBXNativeTarget "SFPageViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04EB0D852369834100202647 /* Debug */,

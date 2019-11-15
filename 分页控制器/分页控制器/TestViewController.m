@@ -34,7 +34,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollEnable:) name:@"changeScrollEnable" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeScrollEnable:) name:@"changeScrollEnable" object:nil];
     NSLog(@"视图将要出现");
 }
 
@@ -62,5 +62,16 @@
     return 70;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    SFPageBaseTableView *tableView = (SFPageBaseTableView *)scrollView;
+    if (tableView.canScroll) {
+        
+        
+    }else {
+        
+        tableView.contentOffset = CGPointZero;
+    }
+}
 
 @end

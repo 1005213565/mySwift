@@ -1,29 +1,17 @@
 //
-//  SFPageBaseTableView.m
-//  分页控制器
+//  SFPageBaseBGScrollView.m
+//  SFPageViewController
 //
-//  Created by fly on 2019/11/3.
+//  Created by mac on 2019/11/15.
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-#import "SFPageBaseTableView.h"
+#import "SFPageBaseBGScrollView.h"
 
-
-
-@implementation SFPageBaseTableView
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        
-        self.isSupportMultipleGesture = NO;
-    }
-    return self;
-}
-
+@implementation SFPageBaseBGScrollView
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
     
     return YES;
 }

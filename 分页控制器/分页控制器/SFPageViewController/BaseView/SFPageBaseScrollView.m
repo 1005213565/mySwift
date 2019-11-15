@@ -27,7 +27,29 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     
-    return self.isSupportMultipleGesture;
+    
+
+    return NO;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    
+    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
+        UIPanGestureRecognizer *recognizer = (UIPanGestureRecognizer *)gestureRecognizer;
+        CGFloat currentY = [recognizer translationInView:self].y;
+        CGFloat currentX = [recognizer translationInView:self].x;
+        
+        if (currentY == 0.0) {
+            return YES;
+        } else {
+            if (fabs(currentX)/currentY >= 5.0) {
+                return YES;
+            } else {
+                return NO;
+            }
+        }
+    }
+    return YES;
 }
 
 
